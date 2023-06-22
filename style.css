@@ -1,0 +1,102 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+  /* height: 100vh; */
+  background: #333;
+}
+
+h2 {
+  font-size: 50px;
+  color: #fff;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.form {
+  background-color: rgba(32, 17, 59, 0.829);
+  display: flex;
+  justify-content: center;
+  border-radius: 20px;
+  text-align: center;
+  align-items: center;
+  flex-flow: column;
+  height: 150px;
+  width: 500px;
+  margin-bottom: 20px;
+  padding: 50px;
+}
+
+form input {
+  margin-top: 10px;
+  padding: 7px;
+  border: none;
+  border-radius: 20px;
+  width: 400px;
+}
+
+.submit {
+  background-color: white;
+  width: 50%;
+  border: none;
+  margin-top: 30px;
+  color: black;
+  border: 1px solid #fff;
+  transition: all 0.4s;
+  cursor: pointer;
+}
+
+.submit:hover {
+  background-color: rgba(32, 17, 59, 0.829);
+  color: #fff;
+}
+
+table {
+  background-color: rgba(192, 192, 192, 0.3);
+  width: 70%;
+  color: #fff;
+  text-align: center;
+}
+
+table thead {
+  height: 60px;
+  font-size: 19px;
+  font-weight: 900;
+  background: #fff;
+  color: rgba(32, 17, 59, 0.829);
+  text-transform: uppercase;
+}
+
+button {
+  padding: 5px 14px;
+  margin: 10px 0;
+  border: none;
+  color: #fff;
+  background-color: rgba(32, 17, 59, 0.829);
+  text-transform: uppercase;
+  font-size: 15px;
+  transition: all 0.4s;
+  cursor: pointer;
+}
+
+.deleteItom {
+  background-color: rgba(204, 8, 8, 0.829);
+}
+
+.update {
+  background: rgba(8, 248, 8, 0.829);
+}
+
+button:hover {
+  background-color: rgba(32, 17, 59, 0.829);
+  color: #fff;
+}
+
