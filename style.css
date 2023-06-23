@@ -9,7 +9,7 @@ body {
   justify-content: center;
   align-items: center;
   flex-flow: column;
-  /* height: 100vh; */
+  width: 100%;
   background: #333;
 }
 
@@ -30,22 +30,23 @@ h2 {
   align-items: center;
   flex-flow: column;
   height: 150px;
-  width: 500px;
+  width: 70%;
   margin-bottom: 20px;
   padding: 50px;
 }
 
-form input {
+.form input {
   margin-top: 10px;
   padding: 7px;
   border: none;
   border-radius: 20px;
-  width: 400px;
+  /* max-width: 100%; */
+    width: 100%;
 }
 
 .submit {
   background-color: white;
-  width: 50%;
+  width: 100%;
   border: none;
   margin-top: 30px;
   color: black;
@@ -55,7 +56,7 @@ form input {
 }
 
 .submit:hover {
-  background-color: rgba(32, 17, 59, 0.829);
+  background-color: rgba(86, 21, 206, 0.829);
   color: #fff;
 }
 
@@ -67,17 +68,26 @@ table {
 }
 
 table thead {
-  height: 60px;
-  font-size: 19px;
-  font-weight: 900;
-  background: #fff;
+  height: 50px;
+
+}
+table thead tr {
   color: rgba(32, 17, 59, 0.829);
+    background: #fff;
   text-transform: uppercase;
+    font-size: 17px;
+  font-weight: 900;
+}
+td {
+color: #fff;
+font-size: 19px;
+
 }
 
 button {
   padding: 5px 14px;
-  margin: 10px 0;
+  margin-left: 20px;
+  margin-top: 10px;
   border: none;
   color: #fff;
   background-color: rgba(32, 17, 59, 0.829);
