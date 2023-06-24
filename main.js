@@ -8,10 +8,11 @@ let product = document.getElementById("product"),
   status = null;
 
 
-
 function rander() {
   let datePro = JSON.parse(localStorage.getItem("product"));
   datePro.forEach(function (item) {
+    let deleteItom = document.querySelectorAll(".deleteItom");
+    let update = document.querySelectorAll(".update");
     table.innerHTML += `
 
            <tr>
@@ -22,7 +23,7 @@ function rander() {
  `;
   });
 }
-rander()
+rander();
 
 
 // click ADD
@@ -36,8 +37,8 @@ submit.addEventListener("click", (e) => {
 
             <tr>
             <td>${product.value}</td>
-            <td><button> delete</button></td>
-            <td><button> update</button></td>
+            <td><button class="update"> update</button></td>
+            <td><button class="deleteItom"> delete</button></td>
               </tr>
   `;
 
