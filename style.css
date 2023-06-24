@@ -88,9 +88,9 @@ button {
   padding: 5px 14px;
   margin-left: 20px;
   margin-top: 10px;
+  margin:10px 0;
   border: none;
   color: #fff;
-  background-color: rgba(32, 17, 59, 0.829);
   text-transform: uppercase;
   font-size: 15px;
   transition: all 0.4s;
