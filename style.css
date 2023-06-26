@@ -110,3 +110,15 @@ button:hover {
   color: #fff;
 }
 
+.deleteAll {
+    background-color: rgb(173, 9, 9);
+  color:#fff;
+    text-transform: uppercase;
+      transition: all 0.4s;
+  cursor: pointer;
+}
+
+.deleteAll:hover {
+   background-color: red;
+  color:#fff;
+}

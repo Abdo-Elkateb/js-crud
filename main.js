@@ -7,7 +7,8 @@ let product = document.getElementById("product"),
   thead = document.getElementById("thead"),
   datePro = JSON.parse(localStorage.getItem("product")) ?? [],
   status = null;
-  console.log(thead)
+
+
 
 function createdThead() {
   thead.innerHTML += `
@@ -91,37 +92,7 @@ submit.addEventListener("click", (e) => {
 //  // delete the product
 let deleteItom = document.querySelectorAll(".deleteItom");
 let update = document.querySelectorAll(".update");
-// deleteItom.forEach(function (item) {
-//   item.addEventListener("click", function () {
-//     let id = item.getAttribute("data-id");
-//     console.log(id);
-//     let storage = JSON.parse(localStorage.getItem("product"))
-//     let newDate = storage.filter(function (item) {
-//       return item.id != id
-//     })
-//     localStorage.setItem("product", JSON.stringify(newDate))
-//     item.parentElement.parentElement.remove()
-
-//   });
-// });
-
-// upData the product
-
-
-// update.forEach(function (item) {
-//   item.addEventListener("click", () => {
-//     let taskes = item.parentElement.previousElementSibling.textContent
-//     product.value = taskes
-//     submit.value = "UPDATE";
-//     submit.style.background = "rgba(8, 248, 8, 0.829)";
-//     submit.style.border = "none",
-//       submit.style.color = "#fff";
-//     status = item.getAttribute("data-id")
-//     // console.log(status)
-
-
-//   })
-// })
+let deleteAll = document.querySelectorAll(".deleteAll");
 
 
 table.addEventListener("click", function (e) {
@@ -146,6 +117,19 @@ table.addEventListener("click", function (e) {
       submit.style.color = "#fff";
     status = item.getAttribute("data-id");
     // console.log(status)
+  } if (e.target.classList.contains("deleteAll")) {
+    // let item = e.target;
+    // let id = item.getAttribute("data-id");
+    // let storage = JSON.parse(localStorage.getItem("product"))
+    // let newDate = storage.filter(function (item) {
+    //   return item.id != id
+    // })
+    // localStorage.setItem("product", JSON.stringify(newDate))
+    // item.parentElement.parentElement.remove()
+    console.log("hi")
   }
 })
+
+
+// deleteAll
 
