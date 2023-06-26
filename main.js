@@ -4,15 +4,27 @@ let product = document.getElementById("product"),
   submit = document.getElementById("submit"),
   form = document.getElementById("form"),
   table = document.getElementById("table"),
+  thead = document.getElementById("thead"),
   datePro = JSON.parse(localStorage.getItem("product")) ?? [],
   status = null;
+  console.log(thead)
+
+function createdThead() {
+  thead.innerHTML += `
+
+           <tr>
+          <th>product</th>
+          <th>edit</th>
+          <th>delete</th>
+        </tr>
+ `;
+}
+createdThead()
 
 
 function rander() {
   let datePro = JSON.parse(localStorage.getItem("product"));
   datePro.forEach(function (item) {
-    let deleteItom = document.querySelectorAll(".deleteItom");
-    let update = document.querySelectorAll(".update");
     table.innerHTML += `
 
            <tr>
@@ -60,17 +72,18 @@ submit.addEventListener("click", (e) => {
       } else {
         return item;
       }
+      rander()
     })
     localStorage.setItem("product", JSON.stringify(newDate))
     submit.value = "Add";
     submit.style.background = "#fff";
     submit.style.color = "#333";
     status = null
-    table.innerHTML = "";
-    rander();
 
   }
   product.value = ""
+     table.innerHTML = "";
+  rander();
 
 });
 
@@ -124,14 +137,15 @@ table.addEventListener("click", function (e) {
   }
   if (e.target.classList.contains("update")) {
     let item = e.target
-        let taskes = item.parentElement.previousElementSibling.textContent
-        product.value = taskes
-        submit.value = "UPDATE";
-        submit.style.background = "rgba(8, 248, 8, 0.829)";
-        submit.style.border = "none",
-          submit.style.color = "#fff";
-        status = item.getAttribute("data-id")
-        // console.log(status)
+    let taskes = item.parentElement.previousElementSibling.textContent
+    console.log(taskes)
+    product.value = taskes
+    submit.value = "UPDATE";
+    submit.style.background = "rgba(8, 248, 8, 0.829)";
+    submit.style.border = "none",
+      submit.style.color = "#fff";
+    status = item.getAttribute("data-id");
+    // console.log(status)
   }
 })
 
