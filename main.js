@@ -2,16 +2,17 @@
 
 let product = document.getElementById("product"),
   submit = document.getElementById("submit"),
+  body = document.getElementById("body"),
   form = document.getElementById("form"),
   table = document.getElementById("table"),
   thead = document.getElementById("thead"),
+  // removeAllElment = document.getElementById("removeAllElment"),
   datePro = JSON.parse(localStorage.getItem("product")) ?? [],
   status = null;
 
-
-
 function createdThead() {
   thead.innerHTML += `
+
 
            <tr>
           <th>product</th>
@@ -37,7 +38,6 @@ function rander() {
   });
 }
 rander();
-
 
 // click ADD
 
@@ -80,22 +80,21 @@ submit.addEventListener("click", (e) => {
     submit.style.background = "#fff";
     submit.style.color = "#333";
     status = null
-
   }
+
   product.value = ""
      table.innerHTML = "";
   rander();
-
 });
 
 
 //  // delete the product
 let deleteItom = document.querySelectorAll(".deleteItom");
 let update = document.querySelectorAll(".update");
-let deleteAll = document.querySelectorAll(".deleteAll");
+let removeAllElment = document.querySelectorAll(".removeAllElment");
 
 
-table.addEventListener("click", function (e) {
+body.addEventListener("click", function (e) {
   if (e.target.classList.contains("deleteItom")) {
     let item = e.target;
     let id = item.getAttribute("data-id");
@@ -105,8 +104,7 @@ table.addEventListener("click", function (e) {
     })
     localStorage.setItem("product", JSON.stringify(newDate))
     item.parentElement.parentElement.remove()
-  }
-  if (e.target.classList.contains("update")) {
+  } if (e.target.classList.contains("update")) {
     let item = e.target
     let taskes = item.parentElement.previousElementSibling.textContent
     console.log(taskes)
@@ -116,20 +114,14 @@ table.addEventListener("click", function (e) {
     submit.style.border = "none",
       submit.style.color = "#fff";
     status = item.getAttribute("data-id");
-    // console.log(status)
-  } if (e.target.classList.contains("deleteAll")) {
-    // let item = e.target;
-    // let id = item.getAttribute("data-id");
-    // let storage = JSON.parse(localStorage.getItem("product"))
-    // let newDate = storage.filter(function (item) {
-    //   return item.id != id
-    // })
-    // localStorage.setItem("product", JSON.stringify(newDate))
-    // item.parentElement.parentElement.remove()
-    console.log("hi")
+  } if (e.target.classList.contains("removeAllElment")) {
+    let storage = JSON.parse(localStorage.getItem("product"))
+
+
+    console.log("storage")
+ 
+
+
   }
 })
-
-
-// deleteAll
 
