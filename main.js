@@ -8,7 +8,7 @@ let product = document.getElementById("product"),
   thead = document.getElementById("thead"),
   datePro = getDateFromLocal() ?? [],
   status = null;
-render();
+
 
 function createdThead() {
   thead.innerHTML += `
@@ -19,9 +19,13 @@ function createdThead() {
         </tr>
  `;
 }
+
 createdThead()
+
+
+
 function render() {
-  let datePro = getDateFromLocal();
+  // let datePro = getDateFromLocal();
   datePro.forEach(function (item) {
     table.innerHTML += `
            <tr>
@@ -32,6 +36,7 @@ function render() {
  `;
   });
 }
+render();
 
 
 // click ADD
@@ -41,25 +46,27 @@ submit.addEventListener("click", (e) => {
   e.preventDefault();
 
   if (status == null) {
+    let id = parseInt(Math.random() * 10000);
+
+    const listDate = {
+      id: id,
+      title: product.value,
+    };
     table.innerHTML += `
 
             <tr>
             <td>${product.value}</td>
-            <td><button class="update"> update</button></td>
-            <td><button class="deleteItom"> delete</button></td>
+            <td><button class="update" data-id="${id}"> update</button></td>
+            <td><button class="deleteItom" data-id="${id}"> delete</button></td>
               </tr>
   `;
 
-    const listDate = {
-      id: parseInt(Math.random() * 10000),
-      title: product.value,
-    };
+
 
     datePro.push(listDate);
     localStorage.setItem("product", JSON.stringify(datePro));
-    console.log(datePro)
   } else {
-    const storage = getDateFromLocal();
+    let storage = getDateFromLocal();
     let newDate = storage.map(function (item) {
       if (item.id == status) {
         return {
@@ -77,10 +84,11 @@ submit.addEventListener("click", (e) => {
     status = null
 
     product.value = ""
+    render();
   }
 
 
-     table.innerHTML = "";
+  table.innerHTML = "";
   render();
 });
 
@@ -90,12 +98,11 @@ let deleteItom = document.querySelectorAll(".deleteItom");
 let update = document.querySelectorAll(".update");
 let removeAllElment = document.querySelectorAll(".removeAllElment");
 
-
 body.addEventListener("click", function (e) {
   if (e.target.classList.contains("deleteItom")) {
     let item = e.target;
     let id = item.getAttribute("data-id");
-    let storage = JSON.parse(localStorage.getItem("product"))
+    let storage = getDateFromLocal();
     let newDate = storage.filter(function (item) {
       return item.id != id
     })
@@ -110,17 +117,20 @@ body.addEventListener("click", function (e) {
     submit.style.border = "none",
       submit.style.color = "#fff";
     status = item.getAttribute("data-id");
-
-
   } if (e.target.classList.contains("removeAllElment")) {
-    console.log("remove")
- 
+    if (datePro.length > 0) {
+      datePro.splice(0);
+      localStorage.clear();
+
+    }else {
+
+    }
+
+
   }
 })
 
-
 // 
 function getDateFromLocal() {
-  console.log("hi")
   return JSON.parse(localStorage.getItem("product"))
 }
