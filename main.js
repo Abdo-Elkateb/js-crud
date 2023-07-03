@@ -6,14 +6,12 @@ let product = document.getElementById("product"),
   form = document.getElementById("form"),
   table = document.getElementById("table"),
   thead = document.getElementById("thead"),
-  // removeAllElment = document.getElementById("removeAllElment"),
-  datePro = JSON.parse(localStorage.getItem("product")) ?? [],
+  datePro = getDateFromLocal() ?? [],
   status = null;
+render();
 
 function createdThead() {
   thead.innerHTML += `
-
-
            <tr>
           <th>product</th>
           <th>edit</th>
@@ -22,13 +20,10 @@ function createdThead() {
  `;
 }
 createdThead()
-
-
-function rander() {
-  let datePro = JSON.parse(localStorage.getItem("product"));
+function render() {
+  let datePro = getDateFromLocal();
   datePro.forEach(function (item) {
     table.innerHTML += `
-
            <tr>
           <td>${item.title}</td>
            <td><button class="update" data-id="${item.id}">   Update</button></td>
@@ -37,7 +32,7 @@ function rander() {
  `;
   });
 }
-rander();
+
 
 // click ADD
 
@@ -62,8 +57,9 @@ submit.addEventListener("click", (e) => {
 
     datePro.push(listDate);
     localStorage.setItem("product", JSON.stringify(datePro));
+    console.log(datePro)
   } else {
-    let storage = JSON.parse(localStorage.getItem("product"))
+    const storage = getDateFromLocal();
     let newDate = storage.map(function (item) {
       if (item.id == status) {
         return {
@@ -73,18 +69,19 @@ submit.addEventListener("click", (e) => {
       } else {
         return item;
       }
-      rander()
     })
     localStorage.setItem("product", JSON.stringify(newDate))
     submit.value = "Add";
     submit.style.background = "#fff";
     submit.style.color = "#333";
     status = null
+
+    product.value = ""
   }
 
-  product.value = ""
+
      table.innerHTML = "";
-  rander();
+  render();
 });
 
 
@@ -107,21 +104,23 @@ body.addEventListener("click", function (e) {
   } if (e.target.classList.contains("update")) {
     let item = e.target
     let taskes = item.parentElement.previousElementSibling.textContent
-    console.log(taskes)
     product.value = taskes
     submit.value = "UPDATE";
     submit.style.background = "rgba(8, 248, 8, 0.829)";
     submit.style.border = "none",
       submit.style.color = "#fff";
     status = item.getAttribute("data-id");
+
+
   } if (e.target.classList.contains("removeAllElment")) {
-    let storage = JSON.parse(localStorage.getItem("product"))
-
-
-    console.log("storage")
+    console.log("remove")
  
-
-
   }
 })
 
+
+// 
+function getDateFromLocal() {
+  console.log("hi")
+  return JSON.parse(localStorage.getItem("product"))
+}
